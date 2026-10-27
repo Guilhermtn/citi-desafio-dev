@@ -9,10 +9,14 @@
     "migration": "cross-env DATABASE_HOST=localhost prisma migrate dev",
     "migration:deploy": "prisma migrate deploy",
     "studio": "cross-env DATABASE_HOST=localhost prisma studio",
+    "seed": "cross-env DATABASE_HOST=localhost prisma db seed",
     "typecheck": "tsc --noEmit",
     "build": "swc src --strip-leading-paths --out-dir dist",
     "start": "node dist/server.js",
     "prod": "yarn migration:deploy && yarn build && yarn start"
+  },
+  "prisma": {
+    "seed": "ts-node-dev --transpile-only prisma/seed.ts"
   },
   "dependencies": {
     "@prisma/client": "5.22.0",
